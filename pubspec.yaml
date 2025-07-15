@@ -1,0 +1,43 @@
+name: sales_app
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  flutter_bloc: ^8.1.3
+  bloc: ^8.1.2
+  
+  # Functional Programming
+  dartz: ^0.10.1
+  
+  # Value Equality
+  equatable: ^2.0.5
+  
+  # Dependency Injection
+  get_it: ^7.6.4
+  
+  # Local Database
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  
+  # Image Picker
+  image_picker: ^1.0.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  
+  # Code Generation for Hive
+  build_runner: ^2.4.7
+  hive_generator: ^2.0.1
+
+flutter:
+  uses-material-design: true
