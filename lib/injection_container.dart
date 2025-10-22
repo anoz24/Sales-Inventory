@@ -5,6 +5,7 @@ import 'core/services/auth_service.dart';
 import 'presentation/add_product/bloc/add_product_bloc.dart';
 import 'presentation/inventory/bloc/products_bloc.dart';
 import 'presentation/auth/bloc/auth_bloc.dart';
+import 'presentation/sales/bloc/sales_bloc.dart';
 import 'presentation/user_management/bloc/user_management_bloc.dart';
 import 'data/datasources/product_local_datasource.dart';
 import 'data/datasources/user_local_datasource.dart';
@@ -39,6 +40,13 @@ Future<void> init() async {
         deleteProduct: sl(),
       ));
   sl.registerFactory(() => AddProductBloc(createProduct: sl()));
+  
+  // Features - Sales
+  // Bloc
+  sl.registerFactory(() => SalesBloc(
+        getProducts: sl(),
+        searchProducts: sl(),
+      ));
   
   // Features - User Management
   // Bloc

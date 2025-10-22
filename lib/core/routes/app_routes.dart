@@ -8,6 +8,8 @@ import '../../presentation/auth/view/pages/login_page.dart';
 import '../../presentation/dashboard/view/pages/dashboard_page.dart';
 import '../../presentation/inventory/bloc/products_bloc.dart';
 import '../../presentation/inventory/view/pages/inventory_page.dart';
+import '../../presentation/sales/bloc/sales_bloc.dart';
+import '../../presentation/sales/bloc/sales_event.dart';
 import '../../presentation/sales/view/pages/ticket_sales_page.dart';
 import '../../presentation/sales_history/view/pages/sales_history_page.dart';
 import '../../presentation/scanner/view/pages/scan_item_page.dart';
@@ -38,7 +40,10 @@ class AppRoutes {
             child: const InventoryPage(),
           ),
       scanItem: (context) => const ScanItemPage(),
-      ticketSales: (context) => const TicketSalesPage(),
+      ticketSales: (context) => BlocProvider(
+            create: (context) => di.sl<SalesBloc>()..add(LoadProductsEvent()),
+            child: const TicketSalesPage(),
+          ),
       salesHistory: (context) => const SalesHistoryPage(),
     };
   }
@@ -71,7 +76,12 @@ class AppRoutes {
       case scanItem:
         return MaterialPageRoute(builder: (context) => const ScanItemPage());
       case ticketSales:
-        return MaterialPageRoute(builder: (context) => const TicketSalesPage());
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => di.sl<SalesBloc>()..add(LoadProductsEvent()),
+            child: const TicketSalesPage(),
+          ),
+        );
       case salesHistory:
         return MaterialPageRoute(builder: (context) => const SalesHistoryPage());
       default:
